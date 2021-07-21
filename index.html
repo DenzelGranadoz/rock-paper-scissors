@@ -6,9 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;1,200&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/fffb528e84.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <script src="script.js">
-        </script>
+    <section class="content">
+        <header class="header">
+            <h1>Rock Paper Scissors</h1>
+            <p>Do you have what it takes to be the best in this game?</p>
+        </header>
+        <div class="condition">
+            <h2>RACE TO 5!</h2>
+        </div>
+        <div class="container">
+            <div class="container-div choice player-choice">
+                <button class="btn player-btn player-rock-btn">
+                    <i id="rock" class="far fa-hand-rock"></i>
+                </button>
+                <button class="btn player-btn player-paper-btn">
+                    <i id="paper" class="far fa-hand-paper"></i>
+                </button>
+                <button class="btn player-btn player-scissors-btn">
+                    <i id="scissors" class="far fa-hand-scissors"></i>
+                </button>
+            </div>
+            <div class="container-div score-div">
+                <h3>Score</h3>
+                <p class="score">
+                    <span id="player-score">0</span>
+                    <span class="dash">-</span>
+                    <span id="computer-score">0</span>
+                </p>
+                <p class="name">
+                    <span>You</span>
+                    <span>vs.</span>
+                    <span>Computer</span>
+                </p>
+            </div>
+            <div class="container-div choice computer-choice">
+                <button id="cr-btn" class="btn computer-btn computer-rock-btn">
+                    <i class="far fa-hand-rock"></i>
+                </button>
+                <button id="cp-btn" class="btn computer-btn computer-paper-btn">
+                    <i class="far fa-hand-paper"></i>
+                </button>
+                <button id="cs-btn" class="btn computer-btn computer-scissors-btn">
+                    <i class="far fa-hand-scissors"></i>
+                </button>
+            </div>
+        </div>
+        <div class="result">
+            <h2 id="won-lost"></h2>
+            <button class="play-again">Play Again?</button>
+        </div>
+        
+
+    </section>
+    <script src="script.js"></script>
 </body>
 </html>

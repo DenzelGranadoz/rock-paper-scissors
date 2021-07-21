@@ -1,77 +1,125 @@
-//global variable
-let computerMoveValue;
-let computerWins = 0;
-let playerWins = 0;
+let playerScore = 0;
+let computerScore = 0;
+//play each move
+const pressButton = document.querySelectorAll(".player-btn");
+pressButton.forEach((pressButton) => {
+    pressButton.addEventListener("click", playMatch)
+});
 
-//computer choice 
-function computerPlay() {
-    let computerMove = Math.floor(Math.random() * 3);
-    if(computerMove == 1){ 
-        computerMoveValue = 1;
-        return console.log("Computer chose Rock");
-    } else if(computerMove == 2){ 
-        computerMoveValue = 2;
-        return console.log("Computer chose Paper");
-    } else {
-        computerMoveValue = 3;
-        return console.log("Computer chose Scissors");
+//restart button
+const buttonPlayAgain = document.querySelector(".play-again");
+
+function playMatch(e) {
+    //end the game
+    if(winCondition() == 'w' || winCondition() == 'l') {
+        return;
+    }
+
+    //take player and computer move
+    const computerMove = randomChoice();
+    const playerMove = e.target.id;
+
+    //output round winner
+    document.getElementById("won-lost").textContent = roundWinner(playerMove, computerMove);
+
+    
+    restartGame();
+    
+
+    updateScore();
+    checkWinner(winCondition());
+}
+
+//clears computer move from previous round
+function removeHighlight() {
+    const computerButton = document.querySelectorAll(".computer-btn");
+    computerButton.forEach((computerButton) => {
+        computerButton.classList.remove("active");  
+    });
+}
+
+//computer choice
+function randomChoice() {
+    let rng = Math.floor(Math.random() * 3);
+    switch(rng) {
+        case 0:
+            removeHighlight();
+            document.getElementById("cr-btn").classList.add("active");
+            return "rock";
+        case 1:
+            removeHighlight();
+            document.getElementById("cp-btn").classList.add("active");
+            return "paper";
+        case 2:
+            removeHighlight();
+            document.getElementById("cs-btn").classList.add("active");
+            return "scissors";
     }
 }
 
-//round flow + player input
-function playRound(playerSelection, computerSelection) {
-    let playerMove = playerSelection.toLowerCase();  //case insensitivity
+function roundWinner(playerMove, computerMove) {
     if(playerMove == "rock") {
-        if(computerMoveValue == 1) {
+        if(computerMove == "rock") {
             return "It's a tie!";
-        } else if (computerMoveValue == 2) {
-            computerWins++;
+        } else if (computerMove == "paper") {
+            computerScore++;
             return "You Lose! Paper beats Rock";
-        } else if (computerMoveValue == 3) {
-            playerWins++;
+        } else if (computerMove == "scissors") {
+            playerScore++;
             return "You Won! Rock beats Scissors";
         }
     }
     else if(playerMove == "paper") {
-        if(computerMoveValue == 2) {
+        if(computerMove == "paper") {
             return "It's a tie!";
-        } else if (computerMoveValue == 3) {
-            computerWins++;
+        } else if (computerMove == "scissors") {
+            computerScore++;
             return "You Lose! Scissors beats Paper";
-        } else if (computerMoveValue == 1) {
-            playerWins++;
+        } else if (computerMove == "rock") {
+            playerScore++;
             return "You Won! Paper beats Rock";
         }
     } 
     else if(playerMove == "scissors") {
-        if(computerMoveValue == 3) {
+        if(computerMove == "scissors") {
             return "It's a tie!";
-        } else if (computerMoveValue == 1) {
-            computerWins++;
+        } else if (computerMove == "rock") {
+            computerScore++;
             return "You Lose! Rock beats Scissors";
-        } else if (computerMoveValue == 2) {
-            playerWins++;
+        } else if (computerMove == "paper") {
+            playerScore++;
             return "You Won! Scissors beats Paper";
         }
     } 
 }
 
-//loops through game flow to determine winner
-function game() {
-    while(true) {
-        const playerSelection = window.prompt("Enter ur choiz");
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-
-        if(playerWins == 4) {
-            console.log("You have won the game. NiCEEE");
-            break;
-        } else if (computerWins == 4) {
-            console.log("You lose the game, Try again?");
-            break;
-        }
+function winCondition() {
+    if(playerScore === 5) {
+        //make play again button visible
+        buttonPlayAgain.style.visibility = "visible";
+        return "w";
+    } else if(computerScore === 5) {
+        buttonPlayAgain.style.visibility = "visible";
+        return "l";
     }
 }
 
-game();
+function checkWinner(winner) {
+    if(winner == "w") {
+        document.getElementById("won-lost").textContent = "Congrats! You have won the match.";
+    } else if(winner == "l") {
+        document.getElementById("won-lost").textContent = "Computer beat you. Try again?";
+    }
+}
 
+//update scoreboard
+function updateScore() {
+    document.getElementById("player-score").textContent = playerScore;
+    document.getElementById("computer-score").textContent = computerScore;
+}
+
+function restartGame() {
+    buttonPlayAgain.addEventListener("click", () => {
+      window.location.reload();
+    });
+}

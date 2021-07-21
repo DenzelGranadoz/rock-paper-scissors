@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+.content {
+    height: 100vh;
+    background-color: #52B2BF;
+}
+
+.header {
+    background-color: #0492c2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 20%;
+}
+
+.header h1 {
+    font-size: 3.5em;
+}
+
+.header p {
+    font-style: italic;
+}
+
+.condition {
+    padding: 1em;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+.container {
+    display: flex;
+    max-width: 100%;
+    justify-content: space-evenly;
+    height: 45%;
+}
+
+.container-div {
+    flex-basis: 30%;
+}
+
+.player-choice {
+    border-right: 3px solid #0492c2;
+}
+
+.computer-choice {
+    border-left: 3px solid #0492c2;
+}
+
+.choice {
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    padding: 1.5em;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid rgb(255, 255, 255, 0.6);
+}
+
+.player-btn:hover {
+    background-color: rgb(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+
+.effects {
+    transform: scale(1.2)
+}
+
+.player-rock-btn {
+    transform: rotate(90deg);
+}
+.player-paper-btn {
+    transform: rotate(90deg);
+}
+.player-scissors-btn {
+    transform: rotate(180deg);
+}
+
+.computer-rock-btn {
+    transform: rotate(-90deg);
+}
+.computer-paper-btn {
+    transform: rotate(-90deg);
+}
+.active {
+    background-color: rgb(255, 255, 255, 0.6);
+}
+
+.far {
+    font-size: 5em;
+}
+
+.score-div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+.score-div h3 {
+    font-size: 2.5em;
+}
+
+.score {
+    font-size: 4em;
+}
+
+.name {
+    font-size: 1.5em;
+    padding-left: 1em;
+}
+
+.name span {
+    margin-right: 15px;
+}
+
+#won-lost {
+    height: 4em;
+    line-height: 5em;
+    text-align: center;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.play-again {
+   padding: 0.5em 1em; 
+   font-weight: bold;
+   background-color: rgb(255, 255, 255, 0.5);
+   border: none;
+   visibility: hidden;
+}
+
+.play-again:hover {
+    transform: scale(1.2);
+}
+
