@@ -18,15 +18,11 @@ function playMatch(e) {
     //take player and computer move
     const computerMove = randomChoice();
     const playerMove = e.target.id;
-    console.log(1);
-    console.log(e);
 
     //output round winner
     document.getElementById("won-lost").textContent = roundWinner(playerMove, computerMove);
 
-    
     restartGame();
-    
 
     updateScore();
     checkWinner(winCondition());
